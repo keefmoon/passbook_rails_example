@@ -8,6 +8,8 @@ Apple [provides a specification](https://developer.apple.com/library/prerelease/
 
 This project is an example implementation of this web service specification in Rails, and will serve the basis for a more comprehensive Rails generator in the near future.
 
+> Apple recently updated their Developer Program License Agreement, so if you have an active developer account, but cannot access the links to PassKit documentation, make sure that you've accepted the new terms. You can accept the new terms on the main page of the iOS Member Center.
+
 ## Getting Started
 
 ```
