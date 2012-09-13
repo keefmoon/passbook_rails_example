@@ -1,0 +1,20 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+
+  database: passbook_rails_example_development
+  pool: 5
+  password:
+
+  host: localhost
+  port: 5432
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: passbook_rails_example_test
+  pool: 5
+  password:
+
+  host: localhost
+  port: 5432
