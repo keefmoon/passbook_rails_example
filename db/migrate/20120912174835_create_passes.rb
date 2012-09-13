@@ -6,9 +6,8 @@ class CreatePasses < ActiveRecord::Migration
       t.hstore :data
 
       t.timestamps
-
-      t.index :pass_type_identifier
-      t.index [:pass_type_identifier, :serial_number]
     end
+
+    add_index :passes, [:pass_type_identifier, :serial_number]
   end
 end
