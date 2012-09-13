@@ -10,6 +10,11 @@ This project is an example implementation of this web service specification in R
 
 > Apple recently updated their Developer Program License Agreement, so if you have an active developer account, but cannot access the links to PassKit documentation, make sure that you've accepted the new terms. You can accept the new terms on the main page of the iOS Member Center.
 
+## Requirements
+
+- Ruby 1.9
+- PostgreSQL 9.1 running locally ([Postgres.app](http://postgresapp.com) is the easiest way to get a Postgres server running on your Mac)
+
 ## Getting Started
 
 ```
@@ -28,6 +33,12 @@ Rails generates a _ton_ of boilerplate. For your convenience, here's a list of t
 - `app/models/passbook/*.rb`
 - `db/migrate/*.rb`
 - `db/seeds.rb`
+
+### Use of Postgres `hstore`
+
+This example application can accomodate multiple kinds of passes because of the [`hstore`](http://www.postgresql.org/docs/9.1/static/hstore.html) schemaless key-value data type in Postgres.
+
+ActiveRecord in Rails 4 will natively support `hstore` serialization, but in the meantime, this functionality is provided by the [`activerecord-postgres-hstore`](https://github.com/softa/activerecord-postgres-hstore) gem. 
 
 ## Deployment
 
