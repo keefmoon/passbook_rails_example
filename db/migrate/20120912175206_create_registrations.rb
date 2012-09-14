@@ -6,8 +6,8 @@ class CreateRegistrations < ActiveRecord::Migration
       t.string :push_token
 
       t.timestamps
-
-      t.index :device_library_identifier
     end
+
+    add_index :registrations, :device_library_identifier
   end
 end
