@@ -8,7 +8,7 @@ Apple [provides a specification](https://developer.apple.com/library/prerelease/
 
 This project is an example implementation of this web service specification in Rails, and will serve the basis for a more comprehensive Rails generator in the near future.
 
-> Apple recently updated their Developer Program License Agreement, so if you have an active developer account, but cannot access the links to PassKit documentation, make sure that you've accepted the new terms. You can accept the new terms on the main page of the iOS Member Center.
+> If you're just starting out Passbook development, you should definitely check out [this great two-part tutorial](http://www.raywenderlich.com/20734/beginning-passbook-part-1) by [Marin Todorov](http://www.raywenderlich.com/about#marintodorov) ([Part 1](http://www.raywenderlich.com/20734/beginning-passbook-part-1) [Part 2](http://www.raywenderlich.com/20785/beginning-passbook-in-ios-6-part-22)).
 
 ## Requirements
 
