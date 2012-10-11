@@ -9,5 +9,7 @@ PassbookRailsExample::Application.routes.draw do
       post '/devices/:device_library_identifier/registrations/:pass_type_identifier/:serial_number' => 'registrations#create'
       delete '/devices/:device_library_identifier/registrations/:pass_type_identifier' => 'registrations#destroy'
     end
+
+    post '/log' => 'logs#create'
   end
 end
