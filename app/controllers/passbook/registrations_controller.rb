@@ -20,7 +20,7 @@ class Passbook::RegistrationsController < ApplicationController
     render nothing: true, status: 404 and return if @pass.nil?
 
     @registration = @pass.registrations.first_or_initialize(device_library_identifier: params[:device_library_identifier])
-    @registration.push_token = params[:push_token]
+    @registration.push_token = params[:pushToken]
 
     status = @registration.new_record? ? 201 : 200
 
