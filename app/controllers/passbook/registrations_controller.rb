@@ -20,7 +20,8 @@ class Passbook::RegistrationsController < ApplicationController
   def create
     @pass = Passbook::Pass.where(pass_type_identifier: params[:pass_type_identifier], serial_number: params[:serial_number]).first
     render nothing: true, status: 404 and return if @pass.nil?
-    render nothing: true, status: 401 and return if request.env['Authorization'] != "ApplePass #{@pass.authentication_token}"
+    logger.info(request.env)
+    render nothing: true, status: 401 and return if request.env['HTTP_AUTHORIZATION'] != "ApplePass #{@pass.authentication_token}"
 
     @registration = @pass.registrations.first_or_initialize(device_library_identifier: params[:device_library_identifier])
     @registration.push_token = params[:pushToken]
@@ -36,7 +37,7 @@ class Passbook::RegistrationsController < ApplicationController
   def destroy
     @pass = Passbook::Pass.where(pass_type_identifier: params[:pass_type_identifier], serial_number: params[:serial_number]).first
     render nothing: true, status: 404 and return if @pass.nil?
-    render nothing: true, status: 401 and return if request.env['Authorization'] != "ApplePass #{@pass.authentication_token}"
+    render nothing: true, status: 401 and return if request.env['HTTP_AUTHORIZATION'] != "ApplePass #{@pass.authentication_token}"
 
     @registration = @pass.registrations.where(device_library_identifier: params[:device_library_identifier]).first
     render nothing: true, status: 404 and return if @registration.nil?
