@@ -52,7 +52,7 @@ $ git push heroku master
 $ heroku run rake db:migrate
 ```
 
-Take the URL from your newly-created Heroku app, and specify that as the webservice URL for your Passbook bundle.
+Take the URL from your newly-created Heroku app, and specify that as the webservice URL for your Passbook bundle. Passbook requires an HTTPS connection to your server for all communications.
 
 To send push notifications about changes in a user's pass, check out [houston](https://github.com/mattt/houston).
 

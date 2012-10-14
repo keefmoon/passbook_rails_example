@@ -1,4 +1,4 @@
-pass = Passbook::Pass.create(pass_type_identifier: "com.company.pass.example", serial_number: "ABC123")
+pass = Passbook::Pass.create(pass_type_identifier: "com.company.pass.example", serial_number: "ABC123", authentication_token: "XYZ456")
 pass.data = {
   foo: 57,
   bar: Time.now,
