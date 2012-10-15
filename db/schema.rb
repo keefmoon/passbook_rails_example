@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(:version => 20121012202250) do
     t.string   "authentication_token"
   end
 
+  add_index "passes", ["pass_type_identifier", "serial_number"], :name => "index_passes_on_pass_type_identifier_and_serial_number"
+
   create_table "registrations", :force => true do |t|
     t.integer  "pass_id"
     t.string   "device_library_identifier"
@@ -35,5 +37,7 @@ ActiveRecord::Schema.define(:version => 20121012202250) do
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
   end
+
+  add_index "registrations", ["device_library_identifier"], :name => "index_registrations_on_device_library_identifier"
 
 end
