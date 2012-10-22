@@ -7,7 +7,7 @@ class Passbook::RegistrationsController < ApplicationController
     head :not_found and return if @pass.nil?
 
     @registrations = @pass.registrations.where(device_library_identifier: params[:device_library_identifier])
-    @registrations = @registrations.where("updated_at >= :passes_updated_since", {passes_updated_since: params[:passes_updated_since]}) if params[:passes_updated_since]
+    @registrations = @registrations.where("updated_at >= :passes_updated_since", {passes_updated_since: params[:passesUpdatedSince]}) if params[:passesUpdatedSince]
 
     if @registrations.any?
       respond_with({lastUpdated: @registrations.maximum(:updated_at), serialNumbers: @registrations.collect(&:pass).collect(&:serial_number)})
