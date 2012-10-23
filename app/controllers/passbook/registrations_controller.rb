@@ -2,15 +2,29 @@ class Passbook::RegistrationsController < ApplicationController
   respond_to :json
 
   # Get the serial numbers for passes associated with a device.
+  # This happens the first time a device communicates with our web service.
+  # Additionally, when a device gets a push notification, it asks our
+  # web service for the serial numbers of passes that have changed since
+  # a given update tag (timestamp).
   def index
-    @pass = Passbook::Pass.where(pass_type_identifier: params[:pass_type_identifier]).first
-    head :not_found and return if @pass.nil?
+    @passes = Passbook::Pass.where(pass_type_identifier: params[:pass_type_identifier])
+    head :not_found and return if @passes.nil?
 
-    @registrations = @pass.registrations.where(device_library_identifier: params[:device_library_identifier])
-    @registrations = @registrations.where("updated_at >= :passes_updated_since", {passes_updated_since: params[:passesUpdatedSince]}) if params[:passesUpdatedSince]
+    @passes = @passes.where('updated_at > :passes_updated_since', {passes_updated_since: params[:passesUpdatedSince]}) if params[:passesUpdatedSince]
 
-    if @registrations.any?
-      respond_with({lastUpdated: @registrations.maximum(:updated_at), serialNumbers: @registrations.collect(&:pass).collect(&:serial_number)})
+    @updated_at = []
+    @serial_numbers = []
+
+    # FIXME: Use ActiveRecord relationship instead of looping over each pass.
+    @passes.each do |pass|
+      if pass.registrations.where(device_library_identifier: params[:device_library_identifier]).count > 0
+        @updated_at << pass[:updated_at]
+        @serial_numbers << pass[:serial_number]
+      end
+    end
+
+    if @serial_numbers.any?
+      respond_with({lastUpdated: @updated_at.max, serialNumbers: @serial_numbers})
     else
       head :no_content
     end
