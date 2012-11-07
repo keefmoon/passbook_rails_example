@@ -15,7 +15,7 @@ class Passbook::RegistrationsController < ApplicationController
     if @passes.any?
       respond_with({
         lastUpdated: @passes.collect(&:updated_at).max,
-        serialNumbers: @passes.collect(&:serial_number)
+        serialNumbers: @passes.collect(&:serial_number).collect(&:to_s)
       })
     else
       head :no_content
