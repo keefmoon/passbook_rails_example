@@ -6,7 +6,9 @@
 
 Apple [provides a specification](https://developer.apple.com/library/prerelease/ios/#documentation/PassKit/Reference/PassKit_WebService/WebService.html) for a REST-style web service protocol to communicate with Passbook, with endpoints to get the latest version of a pass, register / unregister devices to receive push notifications for a pass, and query for passes registered for a device.
 
-This project is an example implementation of this web service specification in Rails, and will serve the basis for a more comprehensive Rails generator in the near future.
+This project is an example implementation of this web service specification in Rails.
+
+> If you're looking to generate `.pkpass` files, check out [Dubai](https://github.com/mattt/dubai).
 
 > If you're just starting out Passbook development, you should definitely check out [this great two-part tutorial](http://www.raywenderlich.com/20734/beginning-passbook-part-1) by [Marin Todorov](http://www.raywenderlich.com/about#marintodorov) ([Part 1](http://www.raywenderlich.com/20734/beginning-passbook-part-1) [Part 2](http://www.raywenderlich.com/20785/beginning-passbook-in-ios-6-part-22)).
 
@@ -29,7 +31,7 @@ $ rails s
 
 Rails generates a _ton_ of boilerplate. For your convenience, here's a list of the files that actually demonstrate the Passbook functionality:
 
-- `app/controllers/passbook/*.rb` 
+- `app/controllers/passbook/*.rb`
 - `app/models/passbook/*.rb`
 - `db/migrate/*.rb`
 - `db/seeds.rb`
@@ -38,7 +40,7 @@ Rails generates a _ton_ of boilerplate. For your convenience, here's a list of t
 
 This example application can accomodate multiple kinds of passes because of the [`hstore`](http://www.postgresql.org/docs/9.1/static/hstore.html) schemaless key-value data type in Postgres.
 
-ActiveRecord in Rails 4 will natively support `hstore` serialization, but in the meantime, this functionality is provided by the [`activerecord-postgres-hstore`](https://github.com/softa/activerecord-postgres-hstore) gem. 
+ActiveRecord in Rails 4 will natively support `hstore` serialization, but in the meantime, this functionality is provided by the [`activerecord-postgres-hstore`](https://github.com/softa/activerecord-postgres-hstore) gem.
 
 ## Deployment
 
@@ -86,7 +88,7 @@ GET http://example.com/v1/devices/:deviceLibraryIdentifier/registrations/:passTy
 - **deviceLibraryIdentifier** A unique identifier that is used to identify and authenticate the device.
 - **passTypeIdentifier** The pass’s type, as specified in the pass.
 - **serialNumber** The unique pass identifier, as specified in the pass.
-- **passesUpdatedSince** _Optional_ A tag from a previous request. 
+- **passesUpdatedSince** _Optional_ A tag from a previous request.
 
 **Response**
 
