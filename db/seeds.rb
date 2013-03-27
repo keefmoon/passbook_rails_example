@@ -9,4 +9,5 @@ pass.data = {
 }
 pass.save
 
-pass.registrations.create(device_library_identifier: "123456789", push_token: "00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000")
+#Manually registration not needed, but kept here for reference.
+#pass.registrations.create(device_library_identifier: "123456789", push_token: "00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000")
