@@ -4,7 +4,7 @@ pass.data = {
   telephoneExt: "9779",
   jobTitle: "Chief Pass Creator",
   managersName: "Paul Bailey",
-  managersExt: "9673"
+  managersExt: "9673",
   expiryDate: "2013-12-31T00:00-23:59"
 }
 pass.save
