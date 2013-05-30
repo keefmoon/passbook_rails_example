@@ -2,9 +2,10 @@ development:
   adapter: postgresql
   encoding: unicode
 
-  database: passbook_rails_example_development
+  database: <Heroku Postgres database>
   pool: 5
-  password:
+  username: <Heroku Postgres username>
+  password: <Heroku Postgres password>
 
   host: localhost
   port: 5432
@@ -12,9 +13,10 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: passbook_rails_example_test
+  database: <Heroku Postgres database>
   pool: 5
-  password:
+  username: <Heroku Postgres username>
+  password: <Heroku Postgres password>
 
   host: localhost
   port: 5432
